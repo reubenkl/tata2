@@ -27,11 +27,11 @@ public class AccountController {
 	
 	@GetMapping("get")
 	public List<Account> getAccounts(){
-		return accountService.findAll();
+		return accountService.getAll();
 	}
 	
 	@GetMapping("{accountId}")
-	public Optional<Account> getByAccountId(@PathVariable Long accountId) {
+	public Account getByAccountId(@PathVariable Long accountId) {
 		return accountService.getByAccountId(accountId);
 	}
 	
@@ -42,14 +42,30 @@ public class AccountController {
 	
 	@RequestMapping(value = "{accountId}", method = RequestMethod.PUT)
 	public Account updateAccount(@PathVariable Long accountId, @RequestBody Account account) {
-		return accountService.updateAccount(accountId, account);
+		return accountService.updateByAccountId(accountId, account);
 	}
 	
-	@PostMapping("dates")
+	@RequestMapping(value = "{accountId}", method = RequestMethod.DELETE)
+	public void deleteAccount(@PathVariable Long accountId) {
+		accountService.deleteByAccountId(accountId);
+	}
+	
+	@GetMapping("getCount")
+	public int countAccounts() {
+		return accountService.countAccounts();
+	}
+	
+	@GetMapping("dates")
 	public int countCreatedAccountsInPeriod(@RequestParam("startDate") 
 			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
 			@RequestParam("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
 		int count = accountService.countCreatedAccountsInPeriod(startDate, endDate);
 		return count;
+	}
+	
+	@GetMapping("deletePack")
+	public void removePackForAccount(@RequestParam("accountId") Long accountId, 
+									@RequestParam("packId") Long packId) {
+		accountService.removePackForAccount(accountId, packId);
 	}
 }

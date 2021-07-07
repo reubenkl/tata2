@@ -18,7 +18,6 @@ public interface IAccountRepository extends JpaRepository<Account, Long>{
 	public List<Account> countCreatedAccountsInPeriod(@Param("startDate")LocalDate startDate, @Param("endDate")LocalDate endDate);
 	
 	
-	
 	//changed from add to addAccount
 //	Account createAccount(Account account);
 

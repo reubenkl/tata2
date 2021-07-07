@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.cg.exceptions.AccountNotFoundException;
 import com.cg.models.Account;
 import com.cg.models.Pack;
 
@@ -15,24 +16,18 @@ public interface IAccountService {
 	//changed from add to addAccount
 	Account createAccount(Account account);
 	
-	List<Account> findAll();
+	List<Account> getAll();
 
-    Optional<Account> getByAccountId(Long accountId) ;
+    Account getByAccountId(Long accountId);
 
-    Account updateAccount(Long accountId, Account account);
+    Account updateByAccountId(Long accountId, Account account);
     
     void deleteByAccountId(Long accountId);
+    
+    int countAccounts();
 
     int countCreatedAccountsInPeriod(LocalDate startDate, LocalDate endDate);
-//
-//  //removed s in accounts
-//    int countCreatedAccount(LocalDate startDate, LocalDate endDate);
-//
-//    /**
-//     * finds count of accounts in the application
-//     */
-//  //removed s in accounts
-//    int countAccount();
-//
-//    void removePackForAccount(Account account, Pack pack);
+
+
+    void removePackForAccount(Long accountId, Long packId);
 }

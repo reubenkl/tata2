@@ -44,6 +44,51 @@ public class Account {
     @JsonManagedReference
     private List<Pack> packs ;
 
-    
+	public Long getAccountId() {
+		return accountId;
+	}
+
+	public void setAccountId(Long accountId) {
+		this.accountId = accountId;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public LocalDate getRegisteredDate() {
+		return registeredDate;
+	}
+
+	public void setRegisteredDate(LocalDate registeredDate) {
+		this.registeredDate = registeredDate;
+	}
+
+	public List<ServiceRequest> getRequests() {
+		return requests;
+	}
+
+	public void setRequests(List<ServiceRequest> requests) {
+		this.requests = requests;
+	}
+
+	public List<Pack> getPacks() {
+		return packs;
+	}
+
+	public void setPacks(List<Pack> packs) {
+		this.packs = packs;
+	}
+
+	@Override
+	public String toString() {
+		return "Account [accountId=" + accountId + ", user=" + user + ", registeredDate=" + registeredDate
+				+ ", requests=" + requests + ", packs=" + packs + "]";
+	}
+
 }
 

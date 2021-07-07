@@ -27,7 +27,7 @@ public class Pack implements Comparable<Pack>  {
 	
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long packId;
 	
     private Double packCost;
     
@@ -60,6 +60,71 @@ public class Pack implements Comparable<Pack>  {
     }
     @Transient
     private long accountId;
+
+	public Long getPackId() {
+		return packId;
+	}
+	public void setPackId(Long id) {
+		this.packId = id;
+	}
+	public Double getPackCost() {
+		return packCost;
+	}
+	public void setPackCost(Double packCost) {
+		this.packCost = packCost;
+	}
+	public Integer getPackValidity() {
+		return packValidity;
+	}
+	public void setPackValidity(Integer packValidity) {
+		this.packValidity = packValidity;
+	}
+	public String getPackDescription() {
+		return packDescription;
+	}
+	public void setPackDescription(String packDescription) {
+		this.packDescription = packDescription;
+	}
+	public String getPackName() {
+		return packName;
+	}
+	public void setPackName(String packName) {
+		this.packName = packName;
+	}
+	public Integer getPackCount() {
+		return packCount;
+	}
+	public void setPackCount(Integer packCount) {
+		this.packCount = packCount;
+	}
+	public List<Channel> getChannelList() {
+		return channelList;
+	}
+	public void setChannelList(List<Channel> channelList) {
+		this.channelList = channelList;
+	}
+	public List<Recharge> getRecharges() {
+		return recharges;
+	}
+	public void setRecharges(List<Recharge> recharges) {
+		this.recharges = recharges;
+	}
+	public Account getAccount() {
+		return account;
+	}
+	public void setAccount(Account account) {}
+	public long getAccountId() {
+		return accountId;
+	}
+	public void setAccountId(long accountId) {
+		this.accountId = accountId;
+	}
+	@Override
+	public String toString() {
+		return "Pack [id=" + packId + ", packCost=" + packCost + ", packValidity=" + packValidity + ", packDescription="
+				+ packDescription + ", packName=" + packName + ", packCount=" + packCount + ", channelList="
+				+ channelList + ", recharges=" + recharges + ", account=" + account + ", accountId=" + accountId + "]";
+	}
     
     
     
